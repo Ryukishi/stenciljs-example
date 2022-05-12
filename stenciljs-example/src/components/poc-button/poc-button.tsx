@@ -44,7 +44,6 @@ export class PocButton {
       <button class={`btn btn-${this.variant} ${this.type} ${this.size}`}>
         <slot></slot>
       </button>
-      {/* <span class={'counter'}>{this.counter}</span> */}
       </Host>
     );
   }
