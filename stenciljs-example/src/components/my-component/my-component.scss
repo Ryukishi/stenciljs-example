@@ -1,0 +1,8 @@
+@use '../../scss/overwrite.scss';
+:host {
+    display: block;
+}
+
+div {
+    color: overwrite.$primary-red;
+}

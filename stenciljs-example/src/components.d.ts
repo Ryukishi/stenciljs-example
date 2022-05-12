@@ -20,6 +20,47 @@ export namespace Components {
          */
         "middle": string;
     }
+    interface PocButton {
+        /**
+          * small | medium | large
+          * @returns the button size
+         */
+        "size": 'small' | 'medium' | 'large';
+        /**
+          * button | submit
+          * @returns the button type
+         */
+        "type": 'button' | 'submit';
+        /**
+          * primary | secondary
+          * @returns the button variant
+         */
+        "variant": 'primary' | 'secondary' | 'outlined' | 'text';
+    }
+    interface PocInputfield {
+        /**
+          * example text for user input
+          * @returns the example text
+         */
+        "placeholder": string;
+    }
+    interface PocTable {
+        /**
+          * data to be displayed in the table
+          * @returns data in json format
+         */
+        "data": any[];
+        /**
+          * headers to be displayed in the first column
+          * @returns first column headers
+         */
+        "horizontalheaders": any;
+        /**
+          * headers to be displayed in the first row
+          * @returns first row headers
+         */
+        "verticalheaders": any;
+    }
 }
 declare global {
     interface HTMLMyComponentElement extends Components.MyComponent, HTMLStencilElement {
@@ -28,8 +69,29 @@ declare global {
         prototype: HTMLMyComponentElement;
         new (): HTMLMyComponentElement;
     };
+    interface HTMLPocButtonElement extends Components.PocButton, HTMLStencilElement {
+    }
+    var HTMLPocButtonElement: {
+        prototype: HTMLPocButtonElement;
+        new (): HTMLPocButtonElement;
+    };
+    interface HTMLPocInputfieldElement extends Components.PocInputfield, HTMLStencilElement {
+    }
+    var HTMLPocInputfieldElement: {
+        prototype: HTMLPocInputfieldElement;
+        new (): HTMLPocInputfieldElement;
+    };
+    interface HTMLPocTableElement extends Components.PocTable, HTMLStencilElement {
+    }
+    var HTMLPocTableElement: {
+        prototype: HTMLPocTableElement;
+        new (): HTMLPocTableElement;
+    };
     interface HTMLElementTagNameMap {
         "my-component": HTMLMyComponentElement;
+        "poc-button": HTMLPocButtonElement;
+        "poc-inputfield": HTMLPocInputfieldElement;
+        "poc-table": HTMLPocTableElement;
     }
 }
 declare namespace LocalJSX {
@@ -47,8 +109,52 @@ declare namespace LocalJSX {
          */
         "middle"?: string;
     }
+    interface PocButton {
+        /**
+          * small | medium | large
+          * @returns the button size
+         */
+        "size"?: 'small' | 'medium' | 'large';
+        /**
+          * button | submit
+          * @returns the button type
+         */
+        "type"?: 'button' | 'submit';
+        /**
+          * primary | secondary
+          * @returns the button variant
+         */
+        "variant"?: 'primary' | 'secondary' | 'outlined' | 'text';
+    }
+    interface PocInputfield {
+        /**
+          * example text for user input
+          * @returns the example text
+         */
+        "placeholder"?: string;
+    }
+    interface PocTable {
+        /**
+          * data to be displayed in the table
+          * @returns data in json format
+         */
+        "data"?: any[];
+        /**
+          * headers to be displayed in the first column
+          * @returns first column headers
+         */
+        "horizontalheaders"?: any;
+        /**
+          * headers to be displayed in the first row
+          * @returns first row headers
+         */
+        "verticalheaders"?: any;
+    }
     interface IntrinsicElements {
         "my-component": MyComponent;
+        "poc-button": PocButton;
+        "poc-inputfield": PocInputfield;
+        "poc-table": PocTable;
     }
 }
 export { LocalJSX as JSX };
@@ -56,6 +162,9 @@ declare module "@stencil/core" {
     export namespace JSX {
         interface IntrinsicElements {
             "my-component": LocalJSX.MyComponent & JSXBase.HTMLAttributes<HTMLMyComponentElement>;
+            "poc-button": LocalJSX.PocButton & JSXBase.HTMLAttributes<HTMLPocButtonElement>;
+            "poc-inputfield": LocalJSX.PocInputfield & JSXBase.HTMLAttributes<HTMLPocInputfieldElement>;
+            "poc-table": LocalJSX.PocTable & JSXBase.HTMLAttributes<HTMLPocTableElement>;
         }
     }
 }
